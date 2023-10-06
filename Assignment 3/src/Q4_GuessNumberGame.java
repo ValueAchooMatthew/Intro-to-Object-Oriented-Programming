@@ -16,7 +16,28 @@ public class Q4_GuessNumberGame {
     // Function that implements the number guessing game
     public static void guessingNumberGame(int number_to_guess, int number_of_trials) {
         /* place your code here */
-        
+        int tries = 0;
+        System.out.println("Guess a number");
+        Scanner input = new java.util.Scanner(System.in);
+        while(true){
+            if(tries <= number_of_trials){
+                int guess = input.nextInt();
+                if(guess == number_to_guess){
+                    System.out.println("You successfully guessed the number");
+                    break;
+                }else if(guess > number_to_guess){
+                    System.out.println("The number is lower than " +guess);
+                    tries += 1;
+
+                }else{
+                    System.out.println("The number is higher than " +guess);
+                    tries += 1;
+                }
+            }else{
+                System.out.println("You have exhausted your trials");
+                break;
+            }
+        }
     }
 
     public static void main(String arg[]) {

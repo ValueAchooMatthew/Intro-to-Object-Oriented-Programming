@@ -48,9 +48,30 @@ public class Q3_AlphabeticPhoneNumber
         long number = 0; // 'number' is the digital phone number to compute from the initial alphabetic phone number.
 
 
-
         /* place your code here */
 
+        for(int i = initial_phone_number.length()-1; i >= 0; i--){
+            if(initial_phone_number.charAt(i) == 'A' || initial_phone_number.charAt(i) == 'B' || initial_phone_number.charAt(i) == 'C'){
+                number += 2*Math.pow(10, 9-i);
+
+            }else if(initial_phone_number. charAt(i) == 'D' || initial_phone_number.charAt(i) == 'E' || initial_phone_number.charAt(i) == 'F'){
+                number += 3*Math.pow(10, 9-i);
+            }else if(initial_phone_number. charAt(i) == 'G' || initial_phone_number.charAt(i) == 'H' || initial_phone_number.charAt(i) == 'I'){
+                number += 4*Math.pow(10, 9-i);
+            }else if(initial_phone_number. charAt(i) == 'J' || initial_phone_number.charAt(i) == 'K' || initial_phone_number.charAt(i) == 'L'){
+                number += 5*Math.pow(10, 9-i);
+            }else if(initial_phone_number. charAt(i) == 'M' || initial_phone_number.charAt(i) == 'N' || initial_phone_number.charAt(i) == 'O'){
+                number += 6*Math.pow(10, 9-i);
+            }else if(initial_phone_number. charAt(i) == 'P' || initial_phone_number.charAt(i) == 'Q' || initial_phone_number.charAt(i) == 'R' || initial_phone_number.charAt(i) == 'S'){
+                number += 7*Math.pow(10, 9-i);
+            }else if(initial_phone_number. charAt(i) == 'T' || initial_phone_number.charAt(i) == 'U' || initial_phone_number.charAt(i) == 'V'){
+                number += 8*Math.pow(10, 9-i);
+            }else if(initial_phone_number. charAt(i) == 'W' || initial_phone_number.charAt(i) == 'X' || initial_phone_number.charAt(i) == 'Y' || initial_phone_number.charAt(i) == 'S'){
+                number += 9*Math.pow(10, 9-i);
+            }else{
+                number += (Character.getNumericValue(initial_phone_number.charAt(i)))*Math.pow(10, 9-i);
+            }        
+        }
 
 
         // Return actual number only at the end of the function
