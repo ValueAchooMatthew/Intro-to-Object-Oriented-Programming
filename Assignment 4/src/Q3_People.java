@@ -15,13 +15,26 @@
  *
  */
 
-
+class People{
+    public String name;
+    private String gender;
+    private int age;
+    public void setAge(int age){
+        this.age = age;
+    }
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+    void getName(){
+        System.out.println(name);
+    }
+}
 public class Q3_People {
 
     //you can modify class People to finish the question
-    static class People{
-        /* place your code here */
-    }
+    /* place your code here */
+
+
 
     public static void main(String[] args) {
         // define two members with following information
@@ -29,6 +42,20 @@ public class Q3_People {
         // name:"Rose", age:18, gender:"Female"
 
         /* place your code here */
+        People Jack = new People();
+        People Rose = new People();
+        Jack.name = "Jack";
+        Jack.setAge(19);
+        Jack.setGender("Male");
+        Jack.getName();
+
+        Rose.name = "Rose";
+        Rose.setAge(18);
+        Rose.setGender("Female");
+        Rose.getName();
+
+
+
     }
 
 }

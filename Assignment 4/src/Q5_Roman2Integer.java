@@ -39,7 +39,67 @@ import java.util.Scanner;
 public class Q5_Roman2Integer {
     /* place your subroutine code here */
 
+    public static int romanToNumeral(String roman){
+        int numeral = 0;
+
+        for(int i = 0; i < roman.length(); i++){
+            if(i <= roman.length() - 2){
+                if(roman.charAt(i) == 'I'){
+                    if(roman.charAt(i+1) == 'V' || roman.charAt(i+1) == 'X'){
+                        numeral -= 1;
+                    }else{
+                        numeral += 1;
+                    }
+                }else if(roman.charAt(i) == 'X') {
+                    if(roman.charAt(i+1) == 'L' || roman.charAt(i+1) == 'C'){
+                        numeral -= 10;
+                    }else{
+                        numeral += 10;
+                    }
+                }else if(roman.charAt(i) == 'C') {
+                    if(roman.charAt(i+1) == 'D' || roman.charAt(i+1) == 'M'){
+                        numeral -= 100;
+                    }else{
+                        numeral += 100;
+                    }
+                }else if(roman.charAt(i) == 'V') {
+                    numeral += 5;
+                }else if(roman.charAt(i) == 'L') {
+                    numeral += 50;
+                }else if(roman.charAt(i) == 'D') {
+                    numeral += 500;
+                }else{
+                    numeral += 1000;
+                }
+            }else{
+                if(roman.charAt(i) == 'I'){
+                    numeral += 1;
+                }else if(roman.charAt(i) == 'V'){
+                    numeral += 5;
+                }else if(roman.charAt(i) == 'X'){
+                    numeral += 10;
+                }else if(roman.charAt(i) == 'L'){
+                    numeral += 50;
+                }else if(roman.charAt(i) == 'C'){
+                    numeral += 100;
+                }else if(roman.charAt(i) == 'D'){
+                    numeral += 500;
+                }else{
+                    numeral += 1000;
+                }
+            }
+        }
+        return numeral;
+    }
+
+
     public static void main(String[] args){
         /* place your code to run your subroutine here */
+        System.out.println("Please enter the roman numerals to be converted:");
+        Scanner input = new java.util.Scanner(System.in);
+        String roman = input.nextLine();
+        System.out.println(romanToNumeral(roman));
+
+
     }
 }
