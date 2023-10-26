@@ -22,6 +22,7 @@ public class Q1_JavaTV {
         System.out.println("Turn on tv.");
         /* place your code here */
         on = true;
+
     }
 
     // (5 marks)
@@ -53,13 +54,13 @@ public class Q1_JavaTV {
     // (5 marks)
     public void setVolume(int newVolumeLevel) {
         if(!on){
-            System.out.println("The TV is off! Please turn on the TV to change the Volume");
+            System.out.println("The TV is off! Please turn on the TV to change the volume");
 
         }else{
             if(newVolumeLevel < 1 || newVolumeLevel > 7){
                 System.out.println("The inputted volume must be between 1 and 7");
             }else{
-                System.out.println("Set Volume to: " + newVolumeLevel + ".");
+                System.out.println("Set volume to: " + newVolumeLevel + ".");
                 volumeLevel = newVolumeLevel;
             }
 
@@ -68,26 +69,46 @@ public class Q1_JavaTV {
 
     // (5 marks)
     public void channelUp() {
-        System.out.println("Channel Up.");
         /* place your code here */
+        System.out.println("Channel Up.");
+        if(channel >= 120){
+            System.out.println("You cannot increase the channel past channel 120!");
+        }else{
+            channel++;
+        }
     }
 
     // (5 marks)
     public void channelDown() {
         System.out.println("Channel Down.");
         /* place your code here */
+        if(channel <=1){
+            System.out.println("You cannot increase the channel past channel 120!");
+        }else{
+            channel--;
+        }
     }
 
     // (5 marks)
     public void volumeUp() {
         System.out.println("Volume Up.");
         /* place your code here */
+        if(volumeLevel >=7){
+            System.out.println("You cannot increase the volume past 7!");
+        }else{
+            volumeLevel++;
+        }
     }
 
     // (5 marks)
     public void volumeDown() {
         System.out.println("Volume Down.");
         /* place your code here */
+        if(volumeLevel <=1){
+            System.out.println("You cannot decrease the volume past 1!");
+        }else{
+            volumeLevel--;
+        }
     }
 
     public String getTVStatus() {
