@@ -21,24 +21,49 @@ public class Q1_JavaTV {
     public void turnOn() {
         System.out.println("Turn on tv.");
         /* place your code here */
+        on = true;
     }
 
     // (5 marks)
     public void turnOff() {
         System.out.println("Turn off tv.");
         /* place your code here */
+        on = false;
     }
 
     // (5 marks)
     public void setChannel(int newChannel) {
-        System.out.println("Set Channel to: " + newChannel + ".");
         /* place your code here */
+
+        if(!on){
+            System.out.println("The TV is off! Please turn on the TV to change the channel");
+
+        }else{
+            if(newChannel < 1 || newChannel > 120){
+                System.out.println("The inputted channel must be between 1 and 120");
+            }else{
+                System.out.println("Set Channel to: " + newChannel + ".");
+                channel = newChannel;
+            }
+
+        }
+
     }
 
     // (5 marks)
     public void setVolume(int newVolumeLevel) {
-        System.out.println("Set Volume to: " + newVolumeLevel + ".");
-        /* place your code here */
+        if(!on){
+            System.out.println("The TV is off! Please turn on the TV to change the Volume");
+
+        }else{
+            if(newVolumeLevel < 1 || newVolumeLevel > 7){
+                System.out.println("The inputted volume must be between 1 and 7");
+            }else{
+                System.out.println("Set Volume to: " + newVolumeLevel + ".");
+                volumeLevel = newVolumeLevel;
+            }
+
+        }
     }
 
     // (5 marks)

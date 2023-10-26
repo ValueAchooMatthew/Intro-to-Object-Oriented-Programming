@@ -50,17 +50,25 @@ public class Q3_TransposeMatrix {
             }
 
         }
-        int[][] transposed_matrix
+        int[][] transposed_matrix = new int[columns][rows];
         for(int i = 0; i <columns; i++){
             int[] new_row = new int[columns];
             for(int j = 0; j < rows; j++){
-                new_row[j] = Matrix[j][i];
+                new_row[j] = matrix[j][i];
                 
             }
+            transposed_matrix[i] = new_row;
 
         }
 
-        System.out.println(java.util.Arrays.deepToString(Matrix));
+        System.out.println("Here is the transposed matrix!");
+        for(int i = 0; i < columns; i++){
+            for(int j = 0; j < rows; j++){
+                System.out.print(transposed_matrix[i][j] + " ");
+
+            }
+            System.out.println();
+        }
 
     }
 }
