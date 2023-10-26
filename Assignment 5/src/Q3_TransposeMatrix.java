@@ -26,11 +26,41 @@
  *
  */
 
+import java.util.Scanner;
+import java.util.Arrays;
+
 public class Q3_TransposeMatrix {
     /* place your subroutine code here */
-    public static transposer()
 
     public static void main(String[] args) {
         /* place your code to run your subroutine here */
+        Scanner input = new java.util.Scanner(System.in);
+        System.out.println("Please input the number of rows the matrix has");
+        int rows = input.nextInt();
+        System.out.println("Please input the number of columns the matrix has");
+        int columns = input.nextInt();
+        int[][] matrix = new int[rows][columns];
+
+        for(int i = 0; i < rows; i++){
+
+            for(int j = 0; j < columns; j++){
+                System.out.println("Please input the entry in row " +(i+1) +" and column " + (j+1));
+                int entry = input.nextInt();
+                matrix[i][j] = entry;
+            }
+
+        }
+        int[][] transposed_matrix
+        for(int i = 0; i <columns; i++){
+            int[] new_row = new int[columns];
+            for(int j = 0; j < rows; j++){
+                new_row[j] = Matrix[j][i];
+                
+            }
+
+        }
+
+        System.out.println(java.util.Arrays.deepToString(Matrix));
+
     }
 }
