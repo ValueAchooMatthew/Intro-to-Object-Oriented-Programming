@@ -18,6 +18,7 @@ class Dice {
     // (5 marks)
     public int rollDice() {
         /* place your code here */
+        return (int)Math.floor(Math.random()*7);
     }
 }
 
@@ -41,6 +42,31 @@ class Gambler {
     // (20 marks)
     static boolean gambling(Gambler gambler_1, Gambler gambler_2, int stake) {
         /* place your code here */
+        if(gambler_1.money >= stake && gambler_2.money >= stake){
+            boolean done = false;
+            while(!done){
+                done = true;
+                gambler_1.money -= stake;
+                gambler_2.money -= stake;
+                int pot = 2*stake;
+                int roll_1 = gambler_1.die.rollDice();
+                int roll_2 = gambler_2.die.rollDice();
+                System.out.println("Gambler 1 rolled a " +roll_1 +".");
+                System.out.println("Gambler 2 rolled a " +roll_2 +".");
+                if(roll_1 > roll_2){
+                    gambler_1.money += pot;
+                } else if (roll_2 > roll_1) {
+                    gambler_2.money += pot;
+                }else{
+                    done = false;
+                }
+            }
+            return true;
+        }else{
+            return false;
+        }
+
+
     }
 }
 
@@ -52,6 +78,13 @@ public class Q1_DiceGambling {
     // (15 marks)
     public static void keepGambling(Gambler gambler_1, Gambler gambler_2, int stake, int max_gambling_times) {
         /* place your code here */
+        int i = 1;
+        while((i < max_gambling_times) && (gambler_1.money >= stake) && (gambler_2.money >= stake)){
+            i++;
+            Gambler.gambling(gambler_1, gambler_2, stake);
+            System.out.println("Gambler 1 has $" + gambler_1.money);
+            System.out.println("Gambler 2 has $" + gambler_2.money);
+        }
     }
 
     public static void main(String[] args) {
