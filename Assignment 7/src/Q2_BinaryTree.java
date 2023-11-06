@@ -36,8 +36,9 @@ class Q2_BinaryTree {
 
     // Design the constructor of the class 'Q2_BinaryTree'
     // (5 marks)
-    Q2_BinaryTree () {
+    Q2_BinaryTree (int start) {
         /* place your code here */
+        root = new Node(start);
     }
 
     // addChild() adds 'child_node' as a child of the 'parent_node'.
@@ -47,15 +48,33 @@ class Q2_BinaryTree {
     // (20 marks)
     public void addChild(Node parent_node, Node child_node, boolean is_left){
         /* place your code here */
+        if(is_left){
+            if(parent_node.left == null){
+                parent_node.left = child_node;
+            }
+        }else{
+            if(parent_node.right == null){
+                parent_node.right = child_node;
+            }
+        }
     }
 
-    // deleteChild() deletes a child of teh 'parent_node'.
+    // deleteChild() deletes a child of the 'parent_node'.
     // if 'is_left' is true, then delete the left child of the 'parent_node'
     // if 'is_left' is false, then delete the right child of the 'parent_node'
     // if the target child to delete is null, then the deletion should stop.
     // (20 marks)
     public void deleteChild(Node parent_node, boolean is_left) {
         /* place your code here */
+        if(is_left){
+            if(parent_node.left != null){
+                parent_node.left = null;
+            }
+        }else{
+            if(parent_node.right != null){
+                parent_node.right = null;
+            }
+        }
     }
 
     // This method is for TA's use.
@@ -75,7 +94,23 @@ class Q2_BinaryTree {
 
     public static void main(String[] args) {
         /* place your code here to build Tree A (10 marks) */
+        Q2_BinaryTree tree = new Q2_BinaryTree(50);
+
+        tree.addChild(tree.root, new Node(30), true);
+        tree.addChild(tree.root, new Node(70), false);
+
+        tree.addChild(tree.root.left, new Node(20), true);
+        tree.addChild(tree.root.left, new Node(40), false);
+
+        tree.addChild(tree.root.right, new Node(60), true);
+        tree.addChild(tree.root.right, new Node(80), false);
+
+        tree.printTree();
 
         /* place your code here to convert Tree A into Tree B (5 marks) */
+        tree.deleteChild(tree.root.left, true);
+
+        tree.printTree();
+
     }
 }
