@@ -19,23 +19,27 @@ public class Q1_OrderedLinkedList extends LKList.A2_LinkedList{
     {
         System.out.println("Running insertion sort of A1_OrderedLinkedList ...");
         /* place your code here */
-        Node curr_node = headref;
-        while(curr_node.next != null){
-            Node prev_node = curr_node;
-            curr_node = curr_node.next;
-            Node nodes_before = headref;
-                while(nodes_before != curr_node){
-                    if(curr_node.data < nodes_before.data){
-                        prev_node.next = curr_node.next;
-                        Node temp = nodes_before.next;
-                        nodes_before.next = curr_node;
-                        curr_node.next = temp;
-                        break;
-                    }
-                    nodes_before = nodes_before.next;
-                }
-        }
+        Node sorted = null;
+        Node curr = headref;
 
+        while (curr != null){
+            Node nextNode = curr.next;
+            if (sorted == null || curr.data <= sorted.data){
+                curr.next = sorted;
+                sorted = curr;
+                curr = nextNode;
+                continue;
+            }
+
+            Node sort = sorted;
+            while (sort.next != null && curr.data >  sort.next.data){
+                sort = sort.next;
+            }
+            curr.next = sort.next;
+            sort.next = curr;
+            curr = nextNode;
+        }
+        head = sorted;
     }
 
     // Use the following method to implement orderedInsert().
@@ -44,6 +48,21 @@ public class Q1_OrderedLinkedList extends LKList.A2_LinkedList{
     // (15 marks)
     public void orderedInsert(Node newnode) {
         /* place your code here */
+
+        if (head == null || head.data >= newnode.data) {
+            newnode.next = head;
+            head = newnode;
+        } else {
+            Node current = head;
+            while (current.next != null && current.next.data < newnode.data) {
+                current = current.next;
+            }
+            newnode.next = current.next;
+            current.next = newnode;
+        }
+
+
+
     }
 
     public static void main (String args[]) {
@@ -60,9 +79,9 @@ public class Q1_OrderedLinkedList extends LKList.A2_LinkedList{
         llist1.sortLinkedList(llist1.head);
         llist1.printList();
 
-//        Node newnode = new Node(10);
-//        llist1.orderedInsert(newnode);
-//        llist1.printList();
+        Node newnode = new Node(10);
+        llist1.orderedInsert(newnode);
+        llist1.printList();
 
         // test A2_LinkedList
         A2_LinkedList llist2 = new A2_LinkedList();
