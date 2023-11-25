@@ -5,6 +5,7 @@
     you cannot use JCF provided set.
  */
 
+import java.util.Objects;
 import java.util.Set;
 
 class m_SetByArray {
@@ -18,14 +19,20 @@ class m_SetByArray {
     // Returns the number of elements in this set (its cardinality).
     // You can ONLY modify the body of this method including the return statement.
     public int size() {
-        return 0;
+        int count = 0;
+        for(int i = 0; i < 100; i++){
+            if(m_array[i] != null){
+                count++;
+            }
+        }
+        return count;
     }
 
     // Question 2.2 (5 marks): implement method isEmpty()
     // Returns true if this set contains no elements, otherwise return false.
     // You can ONLY modify the body of this method including the return statement.
     public boolean isEmpty() {
-        return false;
+        return(size() == 0);
     }
 
     // Question 2.3 (10 marks): implement method contains()
@@ -38,6 +45,11 @@ class m_SetByArray {
     */
     // You can ONLY modify the body of this method including the return statement.
     public boolean contains(Integer o) {
+        for(int i = 0; i < size(); i++){
+            if(Objects.equals(m_array[i], o)){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,7 +62,12 @@ class m_SetByArray {
      */
     // You can ONLY modify the body of this method including the return statement.
     public boolean add(Integer e) {
-        return false;
+        if(contains(e) || size() == 100){
+            return false;
+        }else{
+            m_array[size()] = e;
+            return true;
+        }
     }
 
     // Question 2.5 (15 marks): implement method remove()
@@ -60,19 +77,41 @@ class m_SetByArray {
      */
     // You can ONLY modify the body of this method including the return statement.
     public boolean remove(Integer o) {
-        return false;
+        if(contains(o)){
+            int position = 0;
+            for(int i = 0; i < size(); i++){
+                if(Objects.equals(m_array[i], o)){
+                    position = i;
+                }
+            }
+            for(int i = position; i < size()-1; i++){
+                m_array[i] = m_array[i+1];
+            }
+            m_array[size()-1] = null;
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     // Question 2.6 (5 marks): implement method clear()
     /* Removes all of the elements from this set. The set will be empty after this call returns. */
     // You can ONLY modify the body of this method including the return statement.
     public void clear() {
-
+        for(int i = 0; i < size(); i++){
+            m_array[i] = null;
+        }
     }
 
     // Question 2.7 (5 marks): print the set items
     public void printSet() {
-
+        for(int i = 0; i < size(); i++){
+            if(m_array[i] != null){
+                System.out.print(m_array[i] + ", ");
+            }
+        }
+        System.out.println();
     }
 }
 
